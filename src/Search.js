@@ -37,11 +37,11 @@ class SearchBooks extends Component {
             const currentBook = currentBooks.filter(
                 Book => Book.id === searchBook.id
             )[0];
-            if (!currentBook) {
-                searchBook.shelf = 'none';
+            if (currentBook) {
+                searchBook.shelf = currentBook.shelf;
 
             } else {
-                searchBook.shelf = currentBook.shelf;
+                searchBook.shelf = 'none';
             }
             return searchBook;
         });

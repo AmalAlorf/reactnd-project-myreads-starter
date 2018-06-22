@@ -49,10 +49,10 @@ class BooksApp extends Component {
     };
     ////////////Function to check if thr book is new or no///////////
     checkIsNewBook = book => {
-        const matchedBooks = this.state.books.filter(
-            myBook => myBook.id === book.id
+        const shelfBooks = this.state.books.filter(
+            shelfBook => shelfBook.id === book.id
         );
-        return matchedBooks.length === 0;
+        return shelfBooks.length === 0;
     };
     ////we need to check if the book is new then we need to add it on the shelf  else just we need to  update the book location 
     changeShelfOfBook = (book, shelf) => {

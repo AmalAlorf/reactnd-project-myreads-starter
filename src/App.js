@@ -37,11 +37,34 @@ class BooksApp extends Component {
             };
         });
     };
-    /////// check if the shelf of book is changed 
+    ///////////////add the new book to the shelf///////////////////////
+    addBook = (book, shelf) => {
+        this.setState(previousState => {
+            book.shelf = shelf;
+            previousState.books.push(book);
+            return {
+                books: previousState.books
+            };
+        });
+    };
+    ////////////Function to check if thr book is new or no///////////
+    checkIsNewBook = book => {
+        const matchedBooks = this.state.books.filter(
+            myBook => myBook.id === book.id
+        );
+        return matchedBooks.length === 0;
+    };
+    ////we need to check if the book is new then we need to add it on the shelf  else just we need to  update the book location 
     changeShelfOfBook = (book, shelf) => {
-        this.updateBook(book, shelf);
+        if (this.checkIsNewBook(book)) {
+            this.addBook(book, shelf);
+        } else {
+            this.updateBook(book, shelf);
+        }
+
         BooksAPI.update(book, shelf);
     };
+
     //////Update Search status function
     updateSearchStatus = showSearchPage => {
             this.setState({ showSearchPage: true });

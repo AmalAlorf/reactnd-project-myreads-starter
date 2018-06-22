@@ -29,7 +29,8 @@ class Book extends Component {
             /> <
             div className = "book-shelf-changer" >
             <
-            select value = { this.props.book.shelf }
+
+            select defaultValue = { this.props.book.shelf }
             onChange = { this.handleChange } >
             <
             option value = "choose"
